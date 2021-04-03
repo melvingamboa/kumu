@@ -58,7 +58,8 @@ class AdminController extends Controller
     public function actionCreate()
     {
         $model = new Guests();
-        $events = Events::find()->all();
+        $events = Events::find()->where(['flag_show' => 'Y'])->all();
+
 
         $formData = Yii::$app->request->post();
 
