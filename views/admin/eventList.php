@@ -33,10 +33,7 @@ $this->title;
             <tbody>
             <?php if(count($events)): ?>
                 <?php foreach($events as $event):
-
                  $count = $this->context->Guestbookcount($event->id);
-
-                 print_r($count);
             ?>
                 <tr>
                     <td><?php echo $event->event_name ?></td>
