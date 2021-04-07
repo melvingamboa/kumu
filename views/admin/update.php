@@ -68,14 +68,26 @@ $this->title = 'Update Guests'
                         </div>
 
                     </div> 
-
+        <?php 
+            
+        ?>
                      <div class="col-sm-6 events ">
                     <label for="">Events</label>
                     <?php if(count($events)):?>
-                        <?php foreach($events as $event):?>
+                        <?php foreach($events as $event):
+                            
+                        $guest_event = $this->context->findguestEvents($model['id']);
+                        
+                        $checked = "";
+                        if(in_array($event['id'], $guest_event)){
+                            $checked = "checked";
+                        }else{
+                            $checked = "";
+                        }
+                            ?>
                             <div class="col-sm-12 mt-3 pt-1 card">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="<?php echo $event->id?>" name="Guests[event][]" id="defaultCheck1" >
+                                    <input class="form-check-input" type="checkbox" value="<?php echo $event->id?>" name="Guests[event][]" id="defaultCheck1" <?php echo $checked;?> >
                                     <label class="form-check-label ml-5" for="defaultCheck1">
                                 <?php echo $event->event_name?>
                                     </label>

@@ -221,4 +221,20 @@ class AdminController extends Controller
                 return false;
             }
     }
+
+    public function findguestEvents($guest_id)
+    {
+
+        $events = Guestbook::find($guest_id)
+            ->where(['guest_id' => $guest_id])
+            ->asArray()
+            ->all();
+        
+        $array = array();
+
+        foreach($events as $event){
+            $array[] = $event['event_id'];
+        }
+        return $array;
+    }
 }
